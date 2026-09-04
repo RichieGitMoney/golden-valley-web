@@ -326,6 +326,18 @@
   .hero__proof-mark svg { width: 16px; height: 16px; }
 
   /* ---------- device mockup ---------- */
+  .hero__visual { position: relative; }
+  .hero__visual-note {
+    margin-top: clamp(58px, 9vw, 82px);
+    text-align: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem;
+    line-height: 1.5;
+    letter-spacing: .02em;
+    color: var(--muted);
+    max-width: 42ch;
+    margin-inline: auto;
+  }
   .device { position: relative; animation: floaty 7s ease-in-out infinite; }
   @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   .browser {
@@ -336,12 +348,25 @@
     display: flex; align-items: center; gap: 7px;
     padding: 13px 16px; background: var(--surface); border-bottom: 1px solid var(--border-soft);
   }
+  .browser__bar > span:first-child { display: flex; gap: 7px; flex-shrink: 0; }
   .browser__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); display: block; }
   .browser__url {
     margin-left: 10px; flex: 1;
     background: var(--ground); border: 1px solid var(--border-soft); border-radius: 999px;
     font-size: .68rem; font-family: "IBM Plex Mono", monospace; color: var(--muted);
     padding: 5px 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .browser__tag {
+    flex-shrink: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .58rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--gold-tint);
+    border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+    border-radius: 999px;
+    padding: 3px 8px;
   }
   .dash { padding: 18px; display: grid; gap: 14px; }
   .dash__row { display: flex; gap: 12px; align-items: stretch; }
@@ -629,11 +654,13 @@
       </div>
     </div>
 
-    <div class="device reveal reveal-3" role="img" aria-label="A laptop showing a restaurant website dashboard with weekly reservation analytics and an AI host answering a menu question, with a phone in front confirming a booked table.">
+    <div class="hero__visual reveal reveal-3">
+    <div class="device" role="img" aria-label="Concept preview: an example restaurant website dashboard with sample reservation analytics and an AI host answering a menu question, and a phone confirming a booked table. Figures shown are illustrative, not client results.">
       <div class="browser">
-        <div class="browser__bar" aria-hidden="true">
-          <i></i><i></i><i></i>
-          <span class="browser__url">terraandoak.com</span>
+        <div class="browser__bar">
+          <span aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser__url" aria-hidden="true">terraandoak.com</span>
+          <span class="browser__tag">Sample</span>
         </div>
         <div class="dash">
           <div class="dash__row">
@@ -677,6 +704,8 @@
         </div>
       </div>
     </div>
+    <p class="hero__visual-note">Concept preview &mdash; an example of the customer experience we build. Figures are illustrative, not client results.</p>
+    </div>
   </div>
 </section>
 
@@ -698,7 +727,7 @@
     </div>
     <div class="trust__stats">
       <span><b>Fixed-price quotes</b> &mdash; no hourly surprises</span>
-      <span><b>3&ndash;4 weeks</b> typical launch</span>
+      <span><b>3&ndash;4 week</b> build target</span>
       <span><b>24/7</b> AI answering &amp; booking</span>
       <span><b>Central Valley studio</b>, working with clients across California</span>
     </div>
@@ -717,7 +746,7 @@
       <article class="card">
         <div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
         <h3>Website Design</h3>
-        <p>Fast, mobile-first websites that look like a national brand and load in under two seconds.</p>
+        <p>Clean, mobile-first websites that give a small business the polish of a national brand &mdash; and are built for speed.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Custom website design</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Website redesigns</li>
@@ -770,11 +799,11 @@
     <div class="why__list">
       <div class="feat">
         <span class="feat__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-        <div><b>Fast turnaround</b><span>Most sites go live in three to four weeks, not three to four months.</span></div>
+        <div><b>Fast turnaround</b><span>We build and launch in about three to four weeks &mdash; not three to four months.</span></div>
       </div>
       <div class="feat">
         <span class="feat__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-        <div><b>Mobile optimized</b><span>Designed for the phone first, where 70%+ of your customers actually visit.</span></div>
+        <div><b>Mobile optimized</b><span>Designed for the phone first, where most of your customers will find you.</span></div>
       </div>
       <div class="feat">
         <span class="feat__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
@@ -782,7 +811,7 @@
       </div>
       <div class="feat">
         <span class="feat__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-        <div><b>SEO ready</b><span>Clean structure, fast load times, and local optimization from day one.</span></div>
+        <div><b>SEO ready</b><span>Clean, lightweight code and local optimization built in from day one.</span></div>
       </div>
       <div class="feat">
         <span class="feat__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
