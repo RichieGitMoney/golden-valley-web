@@ -540,10 +540,6 @@
   .final .btn { background: #201607; color: #faf3e2; box-shadow: 0 16px 34px -14px rgba(0,0,0,.5); }
   .final .btn--outline { background: transparent; color: #201607; border-color: rgba(32,22,7,.45); box-shadow: none; }
   .final .btn--outline:hover { background: rgba(32,22,7,.1); }
-  .final__handoff { margin-top: 14px; font-size: var(--step--1); }
-  .final__handoff a { color: #201607; text-decoration: none; border-bottom: 1px solid rgba(32,22,7,.4); padding-bottom: 1px; }
-  .final__handoff a:hover { border-bottom-color: #201607; }
-  .final__handoff b { font-weight: 700; }
   .final__note { margin-top: 20px; font-size: var(--step--1); color: rgba(32,22,7,.72); }
 
   /* ---------- footer ---------- */
@@ -622,7 +618,7 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a class="btn nav__cta" href="#contact">Book Free Strategy Call</a></li>
+      <li><a class="btn nav__cta" href="/questionnaire/">Start Your Project</a></li>
     </ul>
 
     <button class="theme-toggle" id="themeToggle" aria-label="Switch colour theme">
@@ -644,7 +640,7 @@
       <h1 id="hero-title" class="reveal reveal-1">Your Website Should Be Your <span class="grad">Best Employee.</span></h1>
       <p class="hero__sub reveal reveal-2">We build modern websites that attract customers, answer questions with AI, and help your business grow 24/7 &mdash; for restaurants, preschools, contractors, dentists, and service businesses across California&rsquo;s Central Valley and beyond.</p>
       <div class="hero__actions reveal reveal-2">
-        <a class="btn" href="#contact">Book Free Strategy Call</a>
+        <a class="btn" href="/questionnaire/">Start Your Project</a>
         <a class="btn btn--ghost" href="#services">See How It Works
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -653,7 +649,7 @@
         <span class="hero__proof-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
         </span>
-        <span>Founding-client pricing is open now &mdash; limited to our first five projects.</span>
+        <span>No sales call to book &mdash; start with a short questionnaire and we reply personally. Founding-client pricing is open for our first five projects.</span>
       </div>
     </div>
 
@@ -790,7 +786,7 @@
       <p class="eyebrow">Why Golden Valley Web</p>
       <h2 id="why-title" style="font-size:var(--step-3);font-weight:800">Built for owners who are great at their trade &mdash; not at tech.</h2>
       <p style="margin-top:18px;color:var(--muted);font-size:var(--step-1);line-height:1.5">We started Golden Valley Web because local businesses deserve the same technology the big franchises use. You stay focused on your customers; we handle the website, the automation, and the search results &mdash; whether you&rsquo;re down the street or across the state.</p>
-      <a class="btn" style="margin-top:28px" href="#contact">Book Free Strategy Call</a>
+      <a class="btn" style="margin-top:28px" href="/questionnaire/">Start Your Project</a>
     </div>
     <div class="why__list">
       <div class="feat">
@@ -822,18 +818,18 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">How it works</p>
-      <h2 id="process-title">A clear five-step path from first call to steady growth.</h2>
+      <h2 id="process-title">A clear five-step path from questionnaire to steady growth.</h2>
       <p>No jargon, no surprises. You always know what is happening and what comes next.</p>
     </div>
     <ol class="steps">
       <li class="step">
-        <h3>Discovery Call</h3>
-        <p>A free 30-minute conversation about your business, your customers, and your goals.</p>
-        <span class="step__meta">Week 0 &middot; 30 min</span>
+        <h3>Questionnaire</h3>
+        <p>You tell us about your business, goals, and brand so we come to the first call already prepared.</p>
+        <span class="step__meta">~15 min &middot; online</span>
       </li>
       <li class="step">
-        <h3>Strategy</h3>
-        <p>We map your pages, content, keywords, and the automations that will save you time.</p>
+        <h3>Strategy Call</h3>
+        <p>We review your answers, then meet to map your pages, content, keywords, and the automations worth doing.</p>
         <span class="step__meta">Week 1</span>
       </li>
       <li class="step">
@@ -863,7 +859,7 @@
         <p class="eyebrow">Founding clients</p>
         <h2 id="founding-title">We&rsquo;re taking on our first five projects at a founding rate.</h2>
         <p>Golden Valley Web is a new studio. To build our portfolio the right way, the first five businesses we work with get founding-client pricing &mdash; and keep that rate for as long as they stay with us. In return, we ask for honest feedback and permission to feature the finished site.</p>
-        <a class="btn" href="#contact">Claim a Founding Spot</a>
+        <a class="btn" href="/questionnaire/">Claim a Founding Spot</a>
       </div>
       <ul class="founding__list">
         <li>
@@ -893,13 +889,17 @@
     <div>
       <p class="eyebrow">Pricing &amp; FAQ</p>
       <h2 id="faq-title" style="font-size:var(--step-3);font-weight:800">Founding-client website packages.</h2>
-      <p style="margin-top:16px;color:var(--muted);font-size:var(--step-1);line-height:1.5">Our first five clients get special launch pricing while we build our portfolio. Every project is quoted to your needs &mdash; founding-client websites start at <b style="color:var(--ink)">$750</b>, and care plans start at <b style="color:var(--ink)">$99/month</b>. You get an exact quote on your free call, with no obligation.</p>
-      <a class="btn" style="margin-top:26px" href="#contact">Book Free Strategy Call</a>
+      <p style="margin-top:16px;color:var(--muted);font-size:var(--step-1);line-height:1.5">Our first five clients get special launch pricing while we build our portfolio. Every project is quoted to your needs &mdash; founding-client websites start at <b style="color:var(--ink)">$750</b>, and care plans start at <b style="color:var(--ink)">$99/month</b>. You get an exact quote after we review your questionnaire, with no obligation.</p>
+      <a class="btn" style="margin-top:26px" href="/questionnaire/">Start Your Project</a>
     </div>
     <div class="faq__list">
       <details class="qa" open>
+        <summary>How do we get started?</summary>
+        <p>Fill out our project questionnaire. There&rsquo;s no sales call to book &mdash; you tell us about your business, goals, and brand, and we review every submission personally. If we&rsquo;re a good fit, we&rsquo;ll reply with next steps and a quote. Only a few fields are required, so it&rsquo;s quick if you want it to be.</p>
+      </details>
+      <details class="qa">
         <summary>How much does a new website cost?</summary>
-        <p>While we build our portfolio, our first five clients get founding-client pricing &mdash; websites start at $750 and are quoted to what your business actually needs (number of pages, AI booking, online ordering, and so on). Care plans start at $99/month. You will get a fixed quote on your free strategy call &mdash; no hourly surprises.</p>
+        <p>While we build our portfolio, our first five clients get founding-client pricing &mdash; websites start at $750 and are quoted to what your business actually needs (number of pages, AI booking, online ordering, and so on). Care plans start at $99/month. Once we&rsquo;ve reviewed your questionnaire we send a fixed quote &mdash; no hourly surprises.</p>
       </details>
       <details class="qa">
         <summary>How long does it take to launch?</summary>
@@ -930,13 +930,12 @@
   <div class="wrap">
     <div class="final__box">
       <h2 id="final-title">Ready to Grow Your Business?</h2>
-      <p>Book a free 30-minute strategy call. We will review your website, your Google presence, and one automation that could save you hours every week.</p>
+      <p>Start with our project questionnaire. Tell us about your business, your goals, and how you want your brand to feel &mdash; we&rsquo;ll review it and get back to you personally with next steps.</p>
       <div class="hero__actions">
-        <a class="btn" href="mailto:hello@goldenvalleyweb.com?subject=Free%20Strategy%20Call">Book Your Free Consultation</a>
-        <a class="btn btn--outline" href="tel:+12095550142">Call (209) 555-0142</a>
+        <a class="btn" href="/questionnaire/">Complete Your Project Questionnaire</a>
+        <a class="btn btn--outline" href="tel:+12095550142">Or call (209) 555-0142</a>
       </div>
-      <p class="final__note">No pressure, no contracts to sign on the call &mdash; just a clear plan you can use with or without us.</p>
-      <p class="final__handoff"><a href="/questionnaire/">Already working with us? <b>Complete your project questionnaire</b> &rarr;</a></p>
+      <p class="final__note">About 15 minutes, and only a few fields are required. No cost, no commitment &mdash; just the first step.</p>
     </div>
   </div>
 </section>
@@ -990,7 +989,7 @@
           <li><a href="#process">Process</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="/questionnaire/">Client Questionnaire</a></li>
+          <li><a href="/questionnaire/">Start a Project</a></li>
         </ul>
       </div>
       <div>
@@ -1055,7 +1054,8 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How much does a new website cost?", "acceptedAnswer": { "@type": "Answer", "text": "While Golden Valley Web builds its portfolio, the first five founding clients receive special launch pricing. Founding-client websites start at $750 and are quoted to your needs; website care plans start at $99 per month. You receive a fixed quote after your free strategy call." } },
+        { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Fill out the project questionnaire on our website. There is no sales call to book. You tell us about your business, goals, and brand, we review every submission personally, and if we are a good fit we reply with next steps and a quote. Only a few fields are required." } },
+        { "@type": "Question", "name": "How much does a new website cost?", "acceptedAnswer": { "@type": "Answer", "text": "While Golden Valley Web builds its portfolio, the first five founding clients receive special launch pricing. Founding-client websites start at $750 and are quoted to your needs; website care plans start at $99 per month. You receive a fixed quote after we review your questionnaire." } },
         { "@type": "Question", "name": "How long does it take to launch?", "acceptedAnswer": { "@type": "Answer", "text": "Three to four weeks for a typical small-business website once we have your content and photos. Larger projects take six to eight weeks." } },
         { "@type": "Question", "name": "Do you only work with businesses in one city?", "acceptedAnswer": { "@type": "Answer", "text": "No. Golden Valley Web is a Central Valley studio serving Fresno, Modesto, Stockton, Sacramento and Bakersfield, and we build websites and run local SEO for businesses anywhere in California and remotely nationwide." } },
         { "@type": "Question", "name": "What is AI appointment booking?", "acceptedAnswer": { "@type": "Answer", "text": "An AI assistant on your website answers visitor questions, checks your real availability, and books appointments or tables directly into your calendar or reservation system around the clock." } },

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Project questionnaire for Golden Valley Web clients preparing for a website build.">
+<meta name="description" content="Start a project with Golden Valley Web. Tell us about your business and we'll get back to you — no sales call required.">
 <meta name="theme-color" content="#0e1420">
 <link rel="canonical" href="https://goldenvalleyweb.com/questionnaire/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -421,14 +421,15 @@
 <main class="shell" id="main">
 
   <div class="intro">
-    <p class="eyebrow">Client intake</p>
-    <h1>Your Project Questionnaire</h1>
-    <p>This is where your website starts. Your answers tell us what to build, what to
-      write, and how it should feel &mdash; so your strategy and design sessions move fast.
-      It takes about 15&ndash;20 minutes, and you don&rsquo;t have to finish in one sitting.</p>
+    <p class="eyebrow">Start your project</p>
+    <h1>Tell us about your business</h1>
+    <p>This is how you get in touch with Golden Valley Web &mdash; there&rsquo;s no sales call to book.
+      You fill this out, we review it personally, and we get back to you with whether we&rsquo;re a
+      fit and what the next step looks like. <b>Only a few fields are required</b>, so it&rsquo;s
+      quick if you want it to be &mdash; or thorough if you&rsquo;d rather we come fully prepared.</p>
     <p class="saved-hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-      Your answers save automatically on this device. You can close this page and come back to finish.
+      Your answers save automatically on this device &mdash; you can close this page and come back.
     </p>
   </div>
 
@@ -449,7 +450,7 @@
         novalidate autocomplete="on">
 
     <!-- Formspree control fields -->
-    <input type="hidden" name="_subject" id="fsSubject" value="New Website Questionnaire">
+    <input type="hidden" name="_subject" id="fsSubject" value="New Project Inquiry">
     <input type="hidden" name="_next" value="https://goldenvalleyweb.com/questionnaire/?submitted=1">
     <input type="hidden" name="Submitted from" value="goldenvalleyweb.com/questionnaire">
     <div class="hp" aria-hidden="true">
@@ -680,7 +681,7 @@
 
       <div class="callout">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
-        <span>No need to attach files here. After you submit, we&rsquo;ll send you a secure link to upload your logo, photos, and any documents.</span>
+        <span>Nothing to attach here. If we move forward together, we&rsquo;ll send you a secure link to upload your logo, photos, and any documents.</span>
       </div>
 
       <div class="row2">
@@ -761,7 +762,7 @@
 
       <div class="callout plain">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
-        <span>If you have existing copy in a document, hold onto it &mdash; the secure upload link we send after this covers that too.</span>
+        <span>If you have existing copy in a document, hold onto it &mdash; if we move forward, the secure upload link we send covers that too.</span>
       </div>
 
       <div class="field">
@@ -1051,7 +1052,7 @@
 
       <div class="field">
         <label for="legal_links">Links to any you have <span class="opt-tag">optional</span></label>
-        <p class="hint">Paste URLs, or note which ones you&rsquo;ll send through the secure upload link.</p>
+        <p class="hint">Paste URLs, or just note which ones you have &mdash; we&rsquo;ll collect them later if we move forward.</p>
         <textarea id="legal_links" name="legal_links" rows="2"></textarea>
       </div>
 
@@ -1107,10 +1108,10 @@
     <div class="confirm__check" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
     </div>
-    <h2>Thank you &mdash; we received your questionnaire.</h2>
-    <p>We&rsquo;ll review your answers before your strategy and design session. If we need
-      anything else, we&rsquo;ll contact you. Keep an eye out for a secure link to upload your
-      logo, photos, and documents.</p>
+    <h2>Thank you &mdash; we&rsquo;ve got your information.</h2>
+    <p>We&rsquo;ll review your company details and get back to you personally, usually within a
+      couple of business days, with whether we&rsquo;re a fit and what the next step looks like.
+      No commitment either way &mdash; talk soon.</p>
     <a class="btn" href="/">Back to goldenvalleyweb.com</a>
   </section>
 
@@ -1458,7 +1459,7 @@
   function buildPayload() {
     var biz = val("business_name") || "Unknown business";
     var p = {};
-    p["_subject"] = "New Website Questionnaire — " + biz;
+    p["_subject"] = "New Project Inquiry — " + biz;
     p["email"] = val("business_email");
 
     p["1. BUSINESS — Name"] = val("business_name");
@@ -1595,7 +1596,7 @@
   var bn = document.getElementById("business_name");
   var fsSubject = document.getElementById("fsSubject");
   if (bn && fsSubject) bn.addEventListener("blur", function () {
-    fsSubject.value = "New Website Questionnaire" + (bn.value.trim() ? " — " + bn.value.trim() : "");
+    fsSubject.value = "New Project Inquiry" + (bn.value.trim() ? " — " + bn.value.trim() : "");
   });
 
   restore();

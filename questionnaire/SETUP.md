@@ -1,8 +1,9 @@
 # Questionnaire — connecting form delivery
 
-`index.html` in this folder is the multi-step client intake questionnaire, served
-at **https://goldenvalleyweb.com/questionnaire/**. It's a static page; submissions
-are delivered by **Formspree**.
+`index.html` in this folder is the multi-step project questionnaire, served at
+**https://goldenvalleyweb.com/questionnaire/**. It is the site's primary call to
+action &mdash; the first way a prospect contacts Golden Valley Web (there is no
+"book a call" button). It's a static page; submissions are delivered by **Formspree**.
 
 ## One-time wiring (≈3 minutes)
 
@@ -18,13 +19,15 @@ are delivered by **Formspree**.
 
 ## How it behaves
 
-- **Subject line:** `New Website Questionnaire — <Business Name>` (set per submission).
+- **Subject line:** `New Project Inquiry — <Business Name>` (set per submission).
 - **Reply-to:** the client's business email, so you can reply straight from the notification.
 - **Email body:** one labelled line per answer, grouped and numbered by step
   (`1. BUSINESS — Name`, `2. GOALS — Primary goal`, …). Repeatable sections
   (offerings, liked sites, FAQs, testimonials) come through as readable numbered
   lists, not JSON. Empty fields are omitted.
-- **Client sees:** an on-page "Thank you — we received your questionnaire" panel.
+- **Client sees:** an on-page "Thank you — we've got your information" panel saying
+  you'll review their company details and reply personally within a couple of
+  business days. (Reply promptly — this is your inbound lead flow.)
 - **Spam:** a hidden honeypot field (`_gotcha`) + Formspree's own filtering. You can
   also switch on reCAPTCHA in the Formspree dashboard, but for this AJAX form the
   honeypot + Formspree filtering is enough; reCAPTCHA would need extra code.
