@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Project questionnaire for Golden Valley Web clients preparing for a website build.">
+<meta name="theme-color" content="#0e1420">
+<link rel="canonical" href="https://goldenvalleyweb.com/questionnaire/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<title>Project Questionnaire | Golden Valley Web</title>
+
+<style>
+  /* ============================================================
+     Golden Valley Web — client project questionnaire
+     Committed dark theme: deep navy ground, warm gold, cream text.
+     ============================================================ */
+
+  :root {
+    color-scheme: dark;
+
+    --bg:          #0e1420;
+    --bg-glow:     #16203200;
+    --panel:       #131c2c;
+    --card:        #17212f;
+    --card-2:      #1c2637;
+    --field:       #111a27;
+    --border:      #2b3a54;
+    --border-soft: #222f45;
+
+    --ink:       #f4efe1;
+    --ink-soft:  #ccd4e1;
+    --muted:     #94a0b4;
+
+    --gold:      #e6b45c;
+    --gold-ink:  #f1c877;   /* gold used as text on dark — stays legible */
+    --gold-deep: #b98a34;
+    --gold-tint: rgba(231,180,92,.12);
+
+    --danger:    #ff9f9f;
+    --danger-bg: rgba(255,120,120,.10);
+    --ok:        #83d7a4;
+
+    --radius-sm: 9px;
+    --radius:    14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+
+    --shadow: 0 2px 8px rgba(0,0,0,.35), 0 24px 60px -24px rgba(0,0,0,.6);
+
+    --maxw: 720px;
+    --gutter: clamp(18px, 5vw, 40px);
+
+    --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
+    --step-0:  clamp(1rem, 0.97rem + 0.15vw, 1.06rem);
+    --step-1:  clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);
+    --step-2:  clamp(1.4rem, 1.2rem + 0.9vw, 1.85rem);
+    --step-3:  clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(70% 45% at 78% -8%, rgba(231,180,92,.14), transparent 62%),
+      radial-gradient(60% 40% at 12% 4%, rgba(80,110,170,.14), transparent 66%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--ink-soft);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, legend {
+    font-family: "Manrope", "Inter", sans-serif;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  a { color: var(--gold-ink); }
+  img { max-width: 100%; display: block; }
+  [hidden] { display: none !important; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold-ink);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .skip {
+    position: absolute; left: 14px; top: -50px;
+    background: var(--gold); color: #21160a;
+    padding: 9px 15px; border-radius: 8px; font-weight: 700;
+    z-index: 50; transition: top .18s ease; text-decoration: none;
+  }
+  .skip:focus { top: 14px; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(1.3) blur(12px);
+    -webkit-backdrop-filter: saturate(1.3) blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .topbar__in {
+    max-width: var(--maxw); margin-inline: auto;
+    padding: 13px var(--gutter);
+    display: flex; align-items: center; gap: 11px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .brand svg { width: 34px; height: 22px; flex-shrink: 0; }
+  .brand b { font-family: "Manrope", sans-serif; font-weight: 800; font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+  .topbar__tag {
+    margin-left: auto;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .66rem; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--muted); white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    .brand b { letter-spacing: .08em; font-size: .74rem; }
+    .topbar__tag { display: none; }
+  }
+
+  /* ---------- shell ---------- */
+  .shell { max-width: var(--maxw); margin-inline: auto; padding: clamp(28px, 6vw, 56px) var(--gutter) 96px; }
+
+  .intro { margin-bottom: 30px; }
+  .intro .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: var(--step--1);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink);
+    margin: 0 0 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .intro .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; }
+  .intro h1 { font-size: var(--step-3); font-weight: 800; }
+  .intro p { margin: 14px 0 0; color: var(--muted); font-size: var(--step-1); line-height: 1.55; max-width: 54ch; }
+  .intro .saved-hint { margin-top: 14px; font-size: var(--step--1); color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+  .intro .saved-hint svg { width: 15px; height: 15px; color: var(--ok); flex-shrink: 0; }
+
+  /* ---------- progress ---------- */
+  .progress {
+    position: sticky; top: 49px; z-index: 15;
+    margin: 0 calc(var(--gutter) * -1) 26px;
+    padding: 14px var(--gutter);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .progress__meta {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    font-family: "IBM Plex Mono", monospace; font-size: var(--step--1);
+    color: var(--muted); margin-bottom: 9px;
+  }
+  .progress__meta b { color: var(--ink); font-weight: 500; }
+  .progress__meta .pct { color: var(--gold-ink); }
+  .progress__track { height: 6px; border-radius: 999px; background: var(--border-soft); overflow: hidden; }
+  .progress__fill {
+    height: 100%; border-radius: 999px;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+    width: 0%; transition: width .35s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ---------- step / fieldset ---------- */
+  .step {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: var(--radius-lg);
+    padding: clamp(22px, 4vw, 34px);
+    box-shadow: var(--shadow);
+    margin: 0;
+    min-inline-size: 0;
+  }
+  .step__head { margin-bottom: 22px; }
+  .step__num {
+    font-family: "IBM Plex Mono", monospace; font-size: .72rem;
+    letter-spacing: .12em; color: var(--gold-ink); text-transform: uppercase;
+  }
+  .step h2 { font-size: var(--step-2); font-weight: 800; margin-top: 6px; }
+  .step__intro { margin-top: 10px; color: var(--muted); font-size: var(--step-0); line-height: 1.55; }
+
+  /* ---------- fields ---------- */
+  .field { margin-top: 20px; }
+  .field:first-of-type { margin-top: 0; }
+  .field > label,
+  .group > legend {
+    display: block; font-weight: 600; color: var(--ink);
+    font-size: var(--step-0); margin-bottom: 7px; padding: 0;
+  }
+  .req { color: var(--gold-ink); margin-left: 2px; }
+  .opt-tag { color: var(--muted); font-weight: 400; font-size: .86em; margin-left: 6px; }
+  .hint { margin: 0 0 9px; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"],
+  input[type="number"], textarea, select {
+    width: 100%;
+    font: inherit; color: var(--ink);
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 13px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+  input::placeholder, textarea::placeholder { color: #667187; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-tint);
+  }
+  input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"] {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px var(--danger-bg);
+  }
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a0b4' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+
+  .err {
+    display: none;
+    margin: 7px 0 0; font-size: var(--step--1); color: var(--danger);
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .err[hidden] { display: none; }
+  .err:not([hidden]) { display: flex; }
+  .err svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 3px; }
+
+  /* choice groups */
+  .group { border: 0; padding: 0; margin: 20px 0 0; min-inline-size: 0; }
+  .group:first-of-type { margin-top: 0; }
+  .options { display: grid; gap: 8px; margin-top: 4px; }
+  .options.cols { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .opt {
+    display: flex; align-items: flex-start; gap: 11px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--card);
+    cursor: pointer;
+    transition: border-color .13s ease, background .13s ease;
+  }
+  .opt:hover { border-color: #3c4d6d; }
+  .opt.is-checked { border-color: var(--gold); background: var(--gold-tint); }
+  .opt input { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; width: 16px; height: 16px; }
+  .opt span { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.45; }
+  .opt.is-checked span { color: var(--ink); }
+
+  .inline-other { margin-top: 8px; }
+
+  /* callouts */
+  .callout {
+    margin-top: 16px;
+    display: flex; gap: 11px;
+    padding: 13px 15px;
+    border-radius: var(--radius-sm);
+    background: var(--gold-tint);
+    border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent);
+    font-size: var(--step--1); color: var(--ink-soft); line-height: 1.5;
+  }
+  .callout svg { width: 17px; height: 17px; color: var(--gold-ink); flex-shrink: 0; margin-top: 2px; }
+  .callout.plain { background: var(--card); border-color: var(--border); }
+  .callout.plain svg { color: var(--muted); }
+
+  /* repeatable groups */
+  .repeat { margin-top: 8px; display: grid; gap: 14px; }
+  .repeat__item {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 16px 16px 18px;
+  }
+  .repeat__item .field { margin-top: 14px; }
+  .repeat__item .field:first-of-type { margin-top: 0; }
+  .repeat__badge {
+    font-family: "IBM Plex Mono", monospace; font-size: .66rem;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink);
+  }
+  .repeat__row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+  .repeat__remove {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); border-radius: 999px;
+    font: inherit; font-size: .78rem; padding: 4px 11px; cursor: pointer;
+    transition: color .13s ease, border-color .13s ease;
+  }
+  .repeat__remove:hover { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, transparent); }
+  .repeat__add {
+    margin-top: 12px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card-2); border: 1px dashed var(--border);
+    color: var(--ink-soft); border-radius: var(--radius-sm);
+    font: inherit; font-weight: 600; font-size: var(--step--1);
+    padding: 11px 16px; cursor: pointer; width: 100%;
+    justify-content: center;
+    transition: border-color .13s ease, color .13s ease;
+  }
+  .repeat__add:hover { border-color: var(--gold); color: var(--gold-ink); }
+  .repeat__add svg { width: 15px; height: 15px; }
+
+  /* two-up rows on wider screens */
+  .row2 { display: grid; gap: 14px; }
+  @media (min-width: 560px) { .row2 { grid-template-columns: 1fr 1fr; } .row2 .field { margin-top: 0; } }
+
+  /* ---------- step nav ---------- */
+  .stepnav {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: "Manrope", sans-serif; font-weight: 700; font-size: var(--step--1);
+    padding: 13px 22px; border-radius: 999px; border: 1px solid transparent;
+    cursor: pointer; text-decoration: none;
+    background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+    color: #21160a;
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    box-shadow: 0 10px 24px -12px rgba(231,180,92,.7);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -12px rgba(231,180,92,.8); }
+  .btn:disabled { opacity: .55; cursor: progress; transform: none; }
+  .btn--ghost {
+    background: transparent; color: var(--ink);
+    border-color: var(--border); box-shadow: none;
+  }
+  .btn--ghost:hover { border-color: var(--gold); color: var(--gold-ink); transform: none; }
+  .stepnav .btn--next, .stepnav .btn--submit { margin-left: auto; }
+  .stepnav__count { font-family: "IBM Plex Mono", monospace; font-size: .72rem; color: var(--muted); }
+
+  /* error summary */
+  .errsum {
+    margin-bottom: 18px; padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--danger-bg);
+    border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+    color: var(--ink);
+    font-size: var(--step--1);
+  }
+  .errsum b { color: var(--danger); display: block; margin-bottom: 4px; font-family: "Manrope", sans-serif; }
+  .errsum ul { margin: 0; padding-left: 18px; }
+  .errsum a { color: var(--gold-ink); }
+
+  /* honeypot */
+  .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+  /* ---------- confirmation ---------- */
+  .confirm {
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: var(--radius-lg);
+    padding: clamp(34px, 7vw, 60px) clamp(22px, 5vw, 48px);
+    box-shadow: var(--shadow);
+  }
+  .confirm__check {
+    width: 62px; height: 62px; border-radius: 50%; margin: 0 auto 22px;
+    display: grid; place-items: center;
+    background: color-mix(in srgb, var(--ok) 16%, transparent);
+    color: var(--ok);
+  }
+  .confirm__check svg { width: 30px; height: 30px; }
+  .confirm h2 { font-size: var(--step-2); font-weight: 800; }
+  .confirm p { margin: 14px auto 0; color: var(--muted); font-size: var(--step-0); max-width: 46ch; line-height: 1.6; }
+  .confirm .btn { margin-top: 26px; }
+
+  /* submit error */
+  .sendfail {
+    margin-top: 16px; padding: 14px 16px; border-radius: var(--radius-sm);
+    background: var(--danger-bg); border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+    color: var(--ink); font-size: var(--step--1); line-height: 1.55;
+  }
+  .sendfail a { color: var(--gold-ink); }
+
+  footer.foot {
+    max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 48px;
+    color: var(--muted); font-size: .78rem; text-align: center;
+  }
+  footer.foot a { color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#form-start">Skip to the form</a>
+
+<header class="topbar">
+  <div class="topbar__in">
+    <a class="brand" href="/" aria-label="Golden Valley Web home">
+      <svg viewBox="0 0 40 26" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="sun" cx="50%" cy="100%" r="80%">
+            <stop offset="0%" stop-color="#f8e7bc"/><stop offset="55%" stop-color="#f0c874"/><stop offset="100%" stop-color="#f0c874" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M2 18h36" stroke="#e6b45c" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 18a8 8 0 0 0 16 0" fill="url(#sun)" stroke="#e6b45c" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <b>Golden Valley Web</b>
+    </a>
+    <span class="topbar__tag">Project Questionnaire</span>
+  </div>
+</header>
+
+<main class="shell" id="main">
+
+  <div class="intro">
+    <p class="eyebrow">Client intake</p>
+    <h1>Your Project Questionnaire</h1>
+    <p>This is where your website starts. Your answers tell us what to build, what to
+      write, and how it should feel &mdash; so your strategy and design sessions move fast.
+      It takes about 15&ndash;20 minutes, and you don&rsquo;t have to finish in one sitting.</p>
+    <p class="saved-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+      Your answers save automatically on this device. You can close this page and come back to finish.
+    </p>
+  </div>
+
+  <div class="progress" role="region" aria-label="Progress">
+    <div class="progress__meta">
+      <span>Step <b id="stepNow">1</b> of <b id="stepTotal">13</b> &nbsp;&middot;&nbsp; <b id="stepName">Business information</b></span>
+      <span class="pct" id="stepPct">8%</span>
+    </div>
+    <div class="progress__track">
+      <div class="progress__fill" id="progFill" role="progressbar" aria-valuemin="0" aria-valuemax="13" aria-valuenow="1" aria-label="Questionnaire progress"></div>
+    </div>
+  </div>
+
+  <span id="form-start"></span>
+
+  <form id="qform" method="POST"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        novalidate autocomplete="on">
+
+    <!-- Formspree control fields -->
+    <input type="hidden" name="_subject" id="fsSubject" value="New Website Questionnaire">
+    <input type="hidden" name="_next" value="https://goldenvalleyweb.com/questionnaire/?submitted=1">
+    <input type="hidden" name="Submitted from" value="goldenvalleyweb.com/questionnaire">
+    <div class="hp" aria-hidden="true">
+      <label>Leave this field empty
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+
+    <div class="errsum" id="errSum" role="alert" hidden>
+      <b>Please check the highlighted fields.</b>
+      <ul id="errSumList"></ul>
+    </div>
+
+    <!-- ============ STEP 1 — BUSINESS INFORMATION ============ -->
+    <fieldset class="step" data-step="1" aria-labelledby="s1-h">
+      <div class="step__head">
+        <span class="step__num">Step 1 of 13</span>
+        <h2 id="s1-h">Business information</h2>
+        <p class="step__intro">The basics we need to identify your business and reach you.</p>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="business_name">Business name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="business_name" name="business_name" required aria-required="true" autocomplete="organization">
+          <p class="err" id="business_name-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Enter your business name.</span></p>
+        </div>
+        <div class="field">
+          <label for="contact_name">Owner / contact name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="contact_name" name="contact_name" required aria-required="true" autocomplete="name">
+          <p class="err" id="contact_name-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Enter a contact name.</span></p>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="business_email">Business email <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="business_email" name="business_email" required aria-required="true" autocomplete="email" inputmode="email">
+          <p class="err" id="business_email-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Enter a valid email address.</span></p>
+        </div>
+        <div class="field">
+          <label for="business_phone">Business phone <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="business_phone" name="business_phone" required aria-required="true" autocomplete="tel" inputmode="tel">
+          <p class="err" id="business_phone-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Enter a phone number.</span></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="business_address">Business address <span class="opt-tag">optional</span></label>
+        <p class="hint">Street, city, state, ZIP. If you don&rsquo;t serve customers at a location, write &ldquo;service area only.&rdquo;</p>
+        <input type="text" id="business_address" name="business_address" autocomplete="street-address">
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="current_website">Current website URL <span class="opt-tag">optional</span></label>
+          <input type="url" id="current_website" name="current_website" placeholder="https://" autocomplete="url">
+        </div>
+        <div class="field">
+          <label for="years_in_business">Years in business <span class="opt-tag">optional</span></label>
+          <input type="text" id="years_in_business" name="years_in_business" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="social_links">Social media links <span class="opt-tag">optional</span></label>
+        <p class="hint">One per line &mdash; Facebook, Instagram, LinkedIn, YouTube, TikTok, etc.</p>
+        <textarea id="social_links" name="social_links" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="business_description">Short description of the business <span class="opt-tag">optional</span></label>
+        <p class="hint">A sentence or two: what you do and who you do it for.</p>
+        <textarea id="business_description" name="business_description"></textarea>
+      </div>
+
+      <div class="stepnav">
+        <span class="stepnav__count">Step 1 / 13</span>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 2 — BUSINESS GOALS ============ -->
+    <fieldset class="step" data-step="2" aria-labelledby="s2-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 2 of 13</span>
+        <h2 id="s2-h">Business goals</h2>
+        <p class="step__intro">What this website is actually for.</p>
+      </div>
+
+      <fieldset class="group" id="grp-primary_goal">
+        <legend>What is the primary goal of your new website? <span class="req" aria-hidden="true">*</span></legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="primary_goal" value="Generate leads"><span>Generate leads</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Book appointments"><span>Book appointments</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Sell products"><span>Sell products</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Explain services"><span>Explain services</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Increase enrollment"><span>Increase enrollment</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Build credibility"><span>Build credibility</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Improve local search visibility"><span>Improve local search visibility</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Replace an outdated website"><span>Replace an outdated website</span></label>
+          <label class="opt"><input type="radio" name="primary_goal" value="Other"><span>Other</span></label>
+        </div>
+        <div class="inline-other" data-other-for="primary_goal" hidden>
+          <label for="primary_goal_other" class="hint">Tell us more</label>
+          <input type="text" id="primary_goal_other" name="primary_goal_other">
+        </div>
+        <p class="err" id="primary_goal-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Choose one primary goal.</span></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="ideal_customer">Who is your ideal customer? <span class="opt-tag">optional</span></label>
+        <p class="hint">Who are you trying to reach? What matters to them, what worries them?</p>
+        <textarea id="ideal_customer" name="ideal_customer"></textarea>
+      </div>
+
+      <fieldset class="group">
+        <legend>The three most important actions you want a visitor to take</legend>
+        <p class="hint">In priority order. For example: &ldquo;Call us,&rdquo; &ldquo;Request a quote,&rdquo; &ldquo;Read reviews.&rdquo;</p>
+        <div class="field"><label for="action_1">Action 1</label><input type="text" id="action_1" name="action_1"></div>
+        <div class="field"><label for="action_2">Action 2</label><input type="text" id="action_2" name="action_2"></div>
+        <div class="field"><label for="action_3">Action 3</label><input type="text" id="action_3" name="action_3"></div>
+      </fieldset>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 3 — SERVICES / PROGRAMS ============ -->
+    <fieldset class="step" data-step="3" aria-labelledby="s3-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 3 of 13</span>
+        <h2 id="s3-h">Services &amp; programs</h2>
+        <p class="step__intro">The offerings that should be featured on the site.</p>
+      </div>
+
+      <fieldset class="group">
+        <legend>What services, products, programs, or offerings should be featured?</legend>
+        <p class="hint">Add one block per offering. You can add as many as you need.</p>
+        <div class="repeat" data-repeat="offerings" data-min="1"></div>
+        <template data-template="offerings">
+          <div class="repeat__item" data-repeat-item>
+            <div class="repeat__row"><span class="repeat__badge">Offering <span data-index>1</span></span><button type="button" class="repeat__remove" data-remove>Remove</button></div>
+            <div class="field"><label data-label-for="name">Name</label><input type="text" data-field="name"></div>
+            <div class="field"><label data-label-for="description">Description</label><textarea data-field="description" rows="2"></textarea></div>
+            <div class="row2">
+              <div class="field"><label data-label-for="price">Price <span class="opt-tag">if applicable</span></label><input type="text" data-field="price"></div>
+              <div class="field"><label data-label-for="cta">Call-to-action</label><input type="text" data-field="cta" placeholder="e.g. Book a tour"></div>
+            </div>
+          </div>
+        </template>
+        <button type="button" class="repeat__add" data-add="offerings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add another offering</button>
+      </fieldset>
+
+      <fieldset class="group" id="grp-display_pricing">
+        <legend>Should pricing be displayed publicly on the website?</legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="display_pricing" value="Yes — show pricing"><span>Yes &mdash; show pricing</span></label>
+          <label class="opt"><input type="radio" name="display_pricing" value="No — keep pricing off the site"><span>No &mdash; keep pricing off the site</span></label>
+          <label class="opt"><input type="radio" name="display_pricing" value="Some of it — we'll say which"><span>Some of it &mdash; we&rsquo;ll say which</span></label>
+          <label class="opt"><input type="radio" name="display_pricing" value="Not sure yet"><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 4 — WEBSITE PAGES ============ -->
+    <fieldset class="step" data-step="4" aria-labelledby="s4-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 4 of 13</span>
+        <h2 id="s4-h">Website pages</h2>
+        <p class="step__intro">Check every page you think you&rsquo;ll want. We&rsquo;ll refine the list together.</p>
+      </div>
+
+      <fieldset class="group">
+        <legend>Which pages do you want?</legend>
+        <div class="options cols">
+          <label class="opt"><input type="checkbox" name="pages" value="Home"><span>Home</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="About"><span>About</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Services"><span>Services</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Programs"><span>Programs</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Pricing"><span>Pricing</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="FAQ"><span>FAQ</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Contact"><span>Contact</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Booking"><span>Booking</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Testimonials"><span>Testimonials</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Gallery"><span>Gallery</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Blog"><span>Blog</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Locations"><span>Locations</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Team"><span>Team</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Other"><span>Other</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="other_pages">Other pages <span class="opt-tag">optional</span></label>
+        <input type="text" id="other_pages" name="other_pages" placeholder="Anything not listed above">
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 5 — BRAND & DESIGN ============ -->
+    <fieldset class="step" data-step="5" aria-labelledby="s5-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 5 of 13</span>
+        <h2 id="s5-h">Brand &amp; design</h2>
+        <p class="step__intro">How your business should look and feel online.</p>
+      </div>
+
+      <fieldset class="group" id="grp-has_logo">
+        <legend>Do you already have a logo?</legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="has_logo" value="Yes — vector file (AI, EPS, SVG, PDF)"><span>Yes &mdash; vector file (AI, EPS, SVG, PDF)</span></label>
+          <label class="opt"><input type="radio" name="has_logo" value="Yes — image only (PNG, JPG)"><span>Yes &mdash; image only (PNG, JPG)</span></label>
+          <label class="opt"><input type="radio" name="has_logo" value="No — we'd like help creating one"><span>No &mdash; we&rsquo;d like help creating one</span></label>
+        </div>
+      </fieldset>
+
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+        <span>No need to attach files here. After you submit, we&rsquo;ll send you a secure link to upload your logo, photos, and any documents.</span>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="brand_colors">What brand colors do you use? <span class="opt-tag">optional</span></label>
+          <p class="hint">Hex codes if you have them, otherwise describe.</p>
+          <input type="text" id="brand_colors" name="brand_colors" placeholder="#1B4D3E, warm gold, cream…">
+        </div>
+        <div class="field">
+          <label for="avoid_colors">What colors should we avoid? <span class="opt-tag">optional</span></label>
+          <input type="text" id="avoid_colors" name="avoid_colors">
+        </div>
+      </div>
+
+      <fieldset class="group">
+        <legend>How should your brand feel?</legend>
+        <p class="hint">Pick a few that fit.</p>
+        <div class="options cols">
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Modern"><span>Modern</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Professional"><span>Professional</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Friendly"><span>Friendly</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Luxury"><span>Luxury</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Playful"><span>Playful</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Minimal"><span>Minimal</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Bold"><span>Bold</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Warm"><span>Warm</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Trustworthy"><span>Trustworthy</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Educational"><span>Educational</span></label>
+          <label class="opt"><input type="checkbox" name="brand_feel" value="Technical"><span>Technical</span></label>
+        </div>
+        <div class="inline-other">
+          <label for="brand_feel_other" class="hint">Other words that describe the feel</label>
+          <input type="text" id="brand_feel_other" name="brand_feel_other">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>List 2&ndash;5 websites you like &mdash; and what you like about each</legend>
+        <p class="hint">They don&rsquo;t have to be in your industry. Tell us what catches your eye.</p>
+        <div class="repeat" data-repeat="liked_sites" data-min="2"></div>
+        <template data-template="liked_sites">
+          <div class="repeat__item" data-repeat-item>
+            <div class="repeat__row"><span class="repeat__badge">Site <span data-index>1</span></span><button type="button" class="repeat__remove" data-remove>Remove</button></div>
+            <div class="field"><label data-label-for="url">Website URL</label><input type="url" data-field="url" placeholder="https://"></div>
+            <div class="field"><label data-label-for="likes">What you like about it</label><textarea data-field="likes" rows="2"></textarea></div>
+          </div>
+        </template>
+        <button type="button" class="repeat__add" data-add="liked_sites"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add another site</button>
+      </fieldset>
+
+      <div class="field">
+        <label for="disliked_design">Are there websites or design styles you dislike? <span class="opt-tag">optional</span></label>
+        <textarea id="disliked_design" name="disliked_design" rows="2"></textarea>
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 6 — CONTENT ============ -->
+    <fieldset class="step" data-step="6" aria-labelledby="s6-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 6 of 13</span>
+        <h2 id="s6-h">Content</h2>
+        <p class="step__intro">The words on your site. Don&rsquo;t worry about polish &mdash; we&rsquo;ll shape it.</p>
+      </div>
+
+      <fieldset class="group" id="grp-has_copy">
+        <legend>Do you already have website copy?</legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="has_copy" value="Yes — most of it is written"><span>Yes &mdash; most of it is written</span></label>
+          <label class="opt"><input type="radio" name="has_copy" value="Some — bits and pieces"><span>Some &mdash; bits and pieces</span></label>
+          <label class="opt"><input type="radio" name="has_copy" value="No — we'll need help writing it"><span>No &mdash; we&rsquo;ll need help writing it</span></label>
+        </div>
+      </fieldset>
+
+      <div class="callout plain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+        <span>If you have existing copy in a document, hold onto it &mdash; the secure upload link we send after this covers that too.</span>
+      </div>
+
+      <div class="field">
+        <label for="business_story">What is your business story? <span class="opt-tag">optional</span></label>
+        <p class="hint">How and why it started, who&rsquo;s behind it, what you care about.</p>
+        <textarea id="business_story" name="business_story"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="differentiator">What makes your business different from competitors? <span class="opt-tag">optional</span></label>
+        <textarea id="differentiator" name="differentiator"></textarea>
+      </div>
+
+      <fieldset class="group">
+        <legend>What questions do customers ask most often?</legend>
+        <p class="hint">Add the real questions you hear &mdash; and your answers if you have them. These often become your FAQ.</p>
+        <div class="repeat" data-repeat="faqs" data-min="1"></div>
+        <template data-template="faqs">
+          <div class="repeat__item" data-repeat-item>
+            <div class="repeat__row"><span class="repeat__badge">Question <span data-index>1</span></span><button type="button" class="repeat__remove" data-remove>Remove</button></div>
+            <div class="field"><label data-label-for="q">Question</label><input type="text" data-field="q"></div>
+            <div class="field"><label data-label-for="a">Answer <span class="opt-tag">optional</span></label><textarea data-field="a" rows="2"></textarea></div>
+          </div>
+        </template>
+        <button type="button" class="repeat__add" data-add="faqs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add another question</button>
+      </fieldset>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 7 — PHOTOS & MEDIA ============ -->
+    <fieldset class="step" data-step="7" aria-labelledby="s7-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 7 of 13</span>
+        <h2 id="s7-h">Photos &amp; media</h2>
+        <p class="step__intro">What imagery we have to work with.</p>
+      </div>
+
+      <fieldset class="group" id="grp-has_photos">
+        <legend>Do you have professional photos?</legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="has_photos" value="Yes — a full set"><span>Yes &mdash; a full set</span></label>
+          <label class="opt"><input type="radio" name="has_photos" value="Some — a few good ones"><span>Some &mdash; a few good ones</span></label>
+          <label class="opt"><input type="radio" name="has_photos" value="No — just phone photos or none"><span>No &mdash; just phone photos or none</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>What do you have available?</legend>
+        <div class="options cols">
+          <label class="opt"><input type="checkbox" name="media_available" value="Logo files"><span>Logo files</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Team / staff photos"><span>Team / staff photos</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Facility / location photos"><span>Facility / location photos</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Product photos"><span>Product photos</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Service / work-in-progress photos"><span>Service / work photos</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Customer / project photos"><span>Customer / project photos</span></label>
+          <label class="opt"><input type="checkbox" name="media_available" value="Video"><span>Video</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="media_notes">Anything else about your photos or video? <span class="opt-tag">optional</span></label>
+        <textarea id="media_notes" name="media_notes" rows="2"></textarea>
+      </div>
+
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        <span><b>You must have the rights or permission to use everything you send us</b> &mdash; photos, video, logos, and graphics. Please don&rsquo;t submit anything you don&rsquo;t own or have written permission to use.</span>
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 8 — TESTIMONIALS & REVIEWS ============ -->
+    <fieldset class="step" data-step="8" aria-labelledby="s8-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 8 of 13</span>
+        <h2 id="s8-h">Testimonials &amp; reviews</h2>
+        <p class="step__intro">Real words from real customers &mdash; only ones you have permission to show.</p>
+      </div>
+
+      <fieldset class="group" id="grp-has_testimonials">
+        <legend>Do you have testimonials or reviews you want featured?</legend>
+        <div class="options">
+          <label class="opt"><input type="radio" name="has_testimonials" value="Yes — I'll add them below"><span>Yes &mdash; I&rsquo;ll add them below</span></label>
+          <label class="opt"><input type="radio" name="has_testimonials" value="Pull them from our Google / Yelp / Facebook"><span>Pull them from our Google / Yelp / Facebook</span></label>
+          <label class="opt"><input type="radio" name="has_testimonials" value="No — not yet"><span>No &mdash; not yet</span></label>
+        </div>
+      </fieldset>
+
+      <div class="callout plain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+        <span>We never write or invent testimonials. Only real quotes, with the customer&rsquo;s permission, go on your site.</span>
+      </div>
+
+      <fieldset class="group">
+        <legend>Testimonials to feature <span class="opt-tag">optional</span></legend>
+        <div class="repeat" data-repeat="testimonials" data-min="0"></div>
+        <template data-template="testimonials">
+          <div class="repeat__item" data-repeat-item>
+            <div class="repeat__row"><span class="repeat__badge">Testimonial <span data-index>1</span></span><button type="button" class="repeat__remove" data-remove>Remove</button></div>
+            <div class="field"><label data-label-for="name">Customer name</label><input type="text" data-field="name"></div>
+            <div class="field"><label data-label-for="quote">Testimonial</label><textarea data-field="quote" rows="3"></textarea></div>
+            <div class="row2">
+              <div class="field"><label data-label-for="source">Source</label><input type="text" data-field="source" placeholder="Google, Yelp, in person…"></div>
+              <div class="field"><label class="opt" style="margin-top:26px"><input type="checkbox" data-field="permission" value="Yes"><span>This customer has given permission to display this publicly</span></label></div>
+            </div>
+          </div>
+        </template>
+        <button type="button" class="repeat__add" data-add="testimonials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a testimonial</button>
+      </fieldset>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 9 — CONTACT & CONVERSION ============ -->
+    <fieldset class="step" data-step="9" aria-labelledby="s9-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 9 of 13</span>
+        <h2 id="s9-h">Contact &amp; conversion</h2>
+        <p class="step__intro">How customers reach you, and the one action you want them to take.</p>
+      </div>
+
+      <div class="row2">
+        <div class="field"><label for="display_phone">Phone number to display <span class="opt-tag">optional</span></label><input type="tel" id="display_phone" name="display_phone" inputmode="tel"></div>
+        <div class="field"><label for="display_email">Email to display <span class="opt-tag">optional</span></label><input type="email" id="display_email" name="display_email" inputmode="email"></div>
+      </div>
+
+      <div class="field">
+        <label for="display_address">Address to display <span class="opt-tag">optional</span></label>
+        <p class="hint">Leave blank or write &ldquo;service area only&rdquo; if you don&rsquo;t want an address shown.</p>
+        <input type="text" id="display_address" name="display_address">
+      </div>
+
+      <div class="field">
+        <label for="business_hours">Business hours <span class="opt-tag">optional</span></label>
+        <p class="hint">For example: Mon&ndash;Fri 8&ndash;5, Sat 9&ndash;1, Sun closed.</p>
+        <textarea id="business_hours" name="business_hours" rows="2"></textarea>
+      </div>
+
+      <fieldset class="group" id="grp-primary_cta">
+        <legend>Preferred primary call-to-action</legend>
+        <p class="hint">The single most important button on the site.</p>
+        <div class="options cols">
+          <label class="opt"><input type="radio" name="primary_cta" value="Call"><span>Call</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Book Appointment"><span>Book Appointment</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Schedule Consultation"><span>Schedule Consultation</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Request Quote"><span>Request Quote</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Enroll"><span>Enroll</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Visit Location"><span>Visit Location</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Send Message"><span>Send Message</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Buy Now"><span>Buy Now</span></label>
+          <label class="opt"><input type="radio" name="primary_cta" value="Other"><span>Other</span></label>
+        </div>
+        <div class="inline-other" data-other-for="primary_cta" hidden>
+          <label for="primary_cta_other" class="hint">Describe it</label>
+          <input type="text" id="primary_cta_other" name="primary_cta_other">
+        </div>
+      </fieldset>
+
+      <fieldset class="group" id="grp-scheduler">
+        <legend>Do you currently use a scheduling platform?</legend>
+        <div class="options cols">
+          <label class="opt"><input type="radio" name="scheduler" value="None"><span>None</span></label>
+          <label class="opt"><input type="radio" name="scheduler" value="Calendly"><span>Calendly</span></label>
+          <label class="opt"><input type="radio" name="scheduler" value="Square Appointments"><span>Square</span></label>
+          <label class="opt"><input type="radio" name="scheduler" value="Acuity"><span>Acuity</span></label>
+          <label class="opt"><input type="radio" name="scheduler" value="Google Calendar"><span>Google Calendar</span></label>
+          <label class="opt"><input type="radio" name="scheduler" value="Other"><span>Other</span></label>
+        </div>
+        <div class="inline-other" data-other-for="scheduler" hidden>
+          <label for="scheduler_other" class="hint">Which one?</label>
+          <input type="text" id="scheduler_other" name="scheduler_other">
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="booking_url">Booking URL <span class="opt-tag">if you have one</span></label>
+        <input type="url" id="booking_url" name="booking_url" placeholder="https://">
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 10 — SEO & GOOGLE ============ -->
+    <fieldset class="step" data-step="10" aria-labelledby="s10-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 10 of 13</span>
+        <h2 id="s10-h">SEO &amp; Google</h2>
+        <p class="step__intro">How people should find you in search.</p>
+      </div>
+
+      <div class="field">
+        <label for="target_areas">What cities or service areas do you want to target? <span class="opt-tag">optional</span></label>
+        <p class="hint">List the towns and neighborhoods you serve or want customers from.</p>
+        <textarea id="target_areas" name="target_areas" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="search_terms">What should people find you for on Google? <span class="opt-tag">optional</span></label>
+        <p class="hint">The exact phrases someone would type &mdash; e.g. &ldquo;emergency electrician Modesto,&rdquo; &ldquo;preschool near me.&rdquo;</p>
+        <textarea id="search_terms" name="search_terms" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="gbp_link">Google Business Profile link <span class="opt-tag">if available</span></label>
+        <input type="url" id="gbp_link" name="gbp_link" placeholder="https://">
+      </div>
+
+      <div class="field">
+        <label for="competitors">Who are your main competitors? <span class="opt-tag">optional</span></label>
+        <p class="hint">Names and/or website addresses.</p>
+        <textarea id="competitors" name="competitors" rows="2"></textarea>
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 11 — AI & AUTOMATION ============ -->
+    <fieldset class="step" data-step="11" aria-labelledby="s11-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 11 of 13</span>
+        <h2 id="s11-h">AI &amp; automation</h2>
+        <p class="step__intro">Optional add-ons. Check anything you&rsquo;d like to explore &mdash; we&rsquo;ll talk through what&rsquo;s realistic on your call.</p>
+      </div>
+
+      <fieldset class="group">
+        <legend>Which of these interest you?</legend>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="automation_interest" value="Automatically answer common customer questions on the site"><span>Automatically answer common customer questions on the site</span></label>
+          <label class="opt"><input type="checkbox" name="automation_interest" value="Automated appointment booking"><span>Automated appointment booking</span></label>
+          <label class="opt"><input type="checkbox" name="automation_interest" value="Lead forms routed automatically to inbox / CRM"><span>Lead forms routed automatically to your inbox or CRM</span></label>
+          <label class="opt"><input type="checkbox" name="automation_interest" value="Automated follow-up emails or texts"><span>Automated follow-up emails or texts</span></label>
+          <label class="opt"><input type="checkbox" name="automation_interest" value="Review-request automation"><span>Review-request automation</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="automation_other">Any other automation you&rsquo;re curious about? <span class="opt-tag">optional</span></label>
+        <textarea id="automation_other" name="automation_other" rows="2"></textarea>
+      </div>
+
+      <div class="callout plain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+        <span>Checking a box here isn&rsquo;t a commitment from either side. We&rsquo;ll only build automation we can actually deliver, and we&rsquo;ll confirm the details with you first.</span>
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 12 — LEGAL / POLICIES ============ -->
+    <fieldset class="step" data-step="12" aria-labelledby="s12-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 12 of 13</span>
+        <h2 id="s12-h">Legal &amp; policies</h2>
+        <p class="step__intro">What policy documents your business already has.</p>
+      </div>
+
+      <fieldset class="group">
+        <legend>Does your business already have any of these?</legend>
+        <div class="options cols">
+          <label class="opt"><input type="checkbox" name="legal_docs" value="Privacy Policy"><span>Privacy Policy</span></label>
+          <label class="opt"><input type="checkbox" name="legal_docs" value="Terms of Service"><span>Terms of Service</span></label>
+          <label class="opt"><input type="checkbox" name="legal_docs" value="Refund Policy"><span>Refund Policy</span></label>
+          <label class="opt"><input type="checkbox" name="legal_docs" value="Accessibility statement"><span>Accessibility statement</span></label>
+          <label class="opt"><input type="checkbox" name="legal_docs" value="Required industry disclaimers"><span>Required industry disclaimers</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="legal_links">Links to any you have <span class="opt-tag">optional</span></label>
+        <p class="hint">Paste URLs, or note which ones you&rsquo;ll send through the secure upload link.</p>
+        <textarea id="legal_links" name="legal_links" rows="2"></textarea>
+      </div>
+
+      <div class="callout plain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+        <span>We don&rsquo;t write legal policies or make legal claims on your behalf. We&rsquo;ll place the documents you provide, or point you to a service that generates them.</span>
+      </div>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="button" class="btn btn--next" data-next>Next<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </fieldset>
+
+    <!-- ============ STEP 13 — FINAL NOTES ============ -->
+    <fieldset class="step" data-step="13" aria-labelledby="s13-h" hidden>
+      <div class="step__head">
+        <span class="step__num">Step 13 of 13</span>
+        <h2 id="s13-h">Final notes</h2>
+        <p class="step__intro">Last two questions, then you&rsquo;re done.</p>
+      </div>
+
+      <div class="field">
+        <label for="anything_else">Is there anything else we should know? <span class="opt-tag">optional</span></label>
+        <textarea id="anything_else" name="anything_else"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="success_definition">What would make this website project a success for you? <span class="opt-tag">optional</span></label>
+        <textarea id="success_definition" name="success_definition"></textarea>
+      </div>
+
+      <fieldset class="group" id="grp-confirm_accuracy">
+        <legend>Confirmation <span class="req" aria-hidden="true">*</span></legend>
+        <label class="opt" id="opt-confirm">
+          <input type="checkbox" name="confirm_accuracy" value="Yes" required aria-required="true">
+          <span>I confirm that the information, images, testimonials, and materials I submit are accurate, and that I have permission to provide them for use on my website.</span>
+        </label>
+        <p class="err" id="confirm_accuracy-err" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg><span>Please check the box to confirm before submitting.</span></p>
+      </fieldset>
+
+      <div class="stepnav">
+        <button type="button" class="btn btn--ghost" data-prev>Back</button>
+        <button type="submit" class="btn btn--submit" id="submitBtn">Submit questionnaire</button>
+      </div>
+      <div class="sendfail" id="sendFail" hidden></div>
+    </fieldset>
+
+  </form>
+
+  <!-- ============ CONFIRMATION ============ -->
+  <section class="confirm" id="confirmPanel" hidden aria-live="polite">
+    <div class="confirm__check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h2>Thank you &mdash; we received your questionnaire.</h2>
+    <p>We&rsquo;ll review your answers before your strategy and design session. If we need
+      anything else, we&rsquo;ll contact you. Keep an eye out for a secure link to upload your
+      logo, photos, and documents.</p>
+    <a class="btn" href="/">Back to goldenvalleyweb.com</a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Golden Valley Web &middot; <a href="mailto:hello@goldenvalleyweb.com">hello@goldenvalleyweb.com</a> &middot; Your answers are sent securely over HTTPS.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "gvw-questionnaire-v1";
+  var form = document.getElementById("qform");
+  var steps = Array.prototype.slice.call(form.querySelectorAll(".step"));
+  var TOTAL = steps.length;
+  var current = 1;
+
+  var stepNames = ["Business information","Business goals","Services & programs","Website pages",
+    "Brand & design","Content","Photos & media","Testimonials & reviews","Contact & conversion",
+    "SEO & Google","AI & automation","Legal & policies","Final notes"];
+
+  var elNow = document.getElementById("stepNow");
+  var elName = document.getElementById("stepName");
+  var elPct = document.getElementById("stepPct");
+  var elFill = document.getElementById("progFill");
+  var errSum = document.getElementById("errSum");
+  var errSumList = document.getElementById("errSumList");
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- repeatable groups ---------- */
+  function labelText(key) {
+    return ({
+      name: "Name", description: "Description", price: "Price", cta: "Call-to-action",
+      url: "Website URL", likes: "What you like about it",
+      q: "Question", a: "Answer",
+      quote: "Testimonial", source: "Source"
+    })[key] || key;
+  }
+
+  function wireItem(group, item) {
+    // set field names, ids, label associations
+    var groupKey = group.dataset.repeat;
+    var idx = Array.prototype.indexOf.call(group.children, item);
+    item.querySelectorAll("[data-field]").forEach(function (ctrl) {
+      var f = ctrl.dataset.field;
+      var nm = groupKey + "." + idx + "." + f;
+      ctrl.name = nm;
+      if (!ctrl.id) ctrl.id = "id-" + nm;
+      var lbl = item.querySelector('[data-label-for="' + f + '"]');
+      if (lbl) lbl.setAttribute("for", ctrl.id);
+    });
+    var badge = item.querySelector("[data-index]");
+    if (badge) badge.textContent = idx + 1;
+    var remove = item.querySelector("[data-remove]");
+    if (remove) remove.onclick = function () {
+      var min = parseInt(group.dataset.min || "0", 10);
+      if (group.querySelectorAll("[data-repeat-item]").length <= min) { clearItem(item); return; }
+      item.remove();
+      reindex(group);
+      save();
+    };
+    item.addEventListener("input", debouncedSave);
+    item.addEventListener("change", debouncedSave);
+  }
+
+  function clearItem(item) {
+    item.querySelectorAll("input,textarea,select").forEach(function (c) {
+      if (c.type === "checkbox" || c.type === "radio") c.checked = false; else c.value = "";
+    });
+    save();
+  }
+
+  function reindex(group) {
+    var groupKey = group.dataset.repeat;
+    group.querySelectorAll("[data-repeat-item]").forEach(function (item, i) {
+      item.querySelectorAll("[data-field]").forEach(function (ctrl) {
+        var f = ctrl.dataset.field;
+        var nm = groupKey + "." + i + "." + f;
+        ctrl.name = nm; ctrl.id = "id-" + nm;
+        var lbl = item.querySelector('[data-label-for="' + f + '"]');
+        if (lbl) lbl.setAttribute("for", ctrl.id);
+      });
+      var badge = item.querySelector("[data-index]");
+      if (badge) badge.textContent = i + 1;
+    });
+  }
+
+  function addItem(groupKey) {
+    var group = form.querySelector('[data-repeat="' + groupKey + '"]');
+    var tpl = form.querySelector('[data-template="' + groupKey + '"]');
+    var node = tpl.content.firstElementChild.cloneNode(true);
+    group.appendChild(node);
+    wireItem(group, node);
+    reindex(group);
+    return node;
+  }
+
+  form.querySelectorAll("[data-add]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var node = addItem(btn.dataset.add);
+      var first = node.querySelector("input,textarea");
+      if (first) first.focus();
+      save();
+    });
+  });
+
+  /* ---------- "Other" reveal ---------- */
+  form.querySelectorAll("[data-other-for]").forEach(function (box) {
+    var name = box.dataset.otherFor;
+    form.querySelectorAll('input[name="' + name + '"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        var show = form.querySelector('input[name="' + name + '"]:checked');
+        box.hidden = !(show && show.value === "Other");
+      });
+    });
+  });
+
+  /* ---------- option card highlight ---------- */
+  function refreshOptStates(scope) {
+    (scope || form).querySelectorAll(".opt").forEach(function (opt) {
+      var input = opt.querySelector("input");
+      if (input) opt.classList.toggle("is-checked", input.checked);
+    });
+  }
+  form.addEventListener("change", function (e) {
+    if (e.target.matches(".opt input")) refreshOptStates();
+  });
+
+  /* ---------- validation ---------- */
+  var REQUIRED = {
+    1: [
+      { name: "business_name", msg: "Enter your business name." },
+      { name: "contact_name", msg: "Enter a contact name." },
+      { name: "business_email", msg: "Enter a valid email address.", email: true },
+      { name: "business_phone", msg: "Enter a phone number." }
+    ],
+    2: [ { name: "primary_goal", radio: true, msg: "Choose one primary goal." } ],
+    13: [ { name: "confirm_accuracy", checkbox: true, msg: "Please check the box to confirm before submitting." } ]
+  };
+
+  function fieldControl(name) { return form.querySelector('[name="' + name + '"]'); }
+
+  function showErr(name, msg) {
+    var err = document.getElementById(name + "-err");
+    var ctrl = fieldControl(name);
+    if (err) { err.hidden = false; if (msg) err.querySelector("span").textContent = msg; }
+    if (ctrl) {
+      ctrl.setAttribute("aria-invalid", "true");
+      if (err && ctrl.setAttribute) ctrl.setAttribute("aria-describedby", name + "-err");
+    }
+  }
+  function clearErr(name) {
+    var err = document.getElementById(name + "-err");
+    var ctrl = fieldControl(name);
+    if (err) err.hidden = true;
+    if (ctrl) ctrl.removeAttribute("aria-invalid");
+  }
+
+  function validateStep(n) {
+    var rules = REQUIRED[n] || [];
+    var failed = [];
+    rules.forEach(function (r) {
+      clearErr(r.name);
+      var ok = true;
+      if (r.radio) {
+        ok = !!form.querySelector('input[name="' + r.name + '"]:checked');
+      } else if (r.checkbox) {
+        var cb = form.querySelector('input[name="' + r.name + '"]');
+        ok = cb && cb.checked;
+      } else {
+        var c = fieldControl(r.name);
+        var v = c ? c.value.trim() : "";
+        ok = v.length > 0;
+        if (ok && r.email) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      }
+      if (!ok) { failed.push(r); showErr(r.name, r.msg); }
+    });
+    return failed;
+  }
+
+  function renderErrSummary(failed) {
+    if (!failed.length) { errSum.hidden = true; errSumList.innerHTML = ""; return; }
+    errSumList.innerHTML = "";
+    failed.forEach(function (r) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "#";
+      a.textContent = r.msg;
+      a.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        var target = form.querySelector('[name="' + r.name + '"]');
+        if (target) target.focus();
+      });
+      li.appendChild(a);
+      errSumList.appendChild(li);
+    });
+    errSum.hidden = false;
+  }
+
+  /* ---------- step navigation ---------- */
+  function updateProgress() {
+    elNow.textContent = current;
+    elName.textContent = stepNames[current - 1];
+    var pct = Math.round((current / TOTAL) * 100);
+    elPct.textContent = pct + "%";
+    elFill.style.width = pct + "%";
+    elFill.setAttribute("aria-valuenow", String(current));
+  }
+
+  function goTo(n, opts) {
+    opts = opts || {};
+    current = Math.max(1, Math.min(TOTAL, n));
+    steps.forEach(function (s) { s.hidden = parseInt(s.dataset.step, 10) !== current; });
+    updateProgress();
+    errSum.hidden = true;
+    if (!opts.silent) {
+      var active = steps[current - 1];
+      var h = active.querySelector("h2");
+      if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+      window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+    }
+    save();
+  }
+
+  form.querySelectorAll("[data-next]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var failed = validateStep(current);
+      if (failed.length) { renderErrSummary(failed); errSum.focus && errSum.setAttribute("tabindex","-1"), errSum.focus(); return; }
+      goTo(current + 1);
+    });
+  });
+  form.querySelectorAll("[data-prev]").forEach(function (b) {
+    b.addEventListener("click", function () { goTo(current - 1); });
+  });
+
+  /* ---------- persistence ---------- */
+  function collect() {
+    var data = { _step: current, _repeat: {}, fields: {} };
+    form.querySelectorAll("[data-repeat]").forEach(function (g) {
+      data._repeat[g.dataset.repeat] = g.querySelectorAll("[data-repeat-item]").length;
+    });
+    form.querySelectorAll("input,select,textarea").forEach(function (el) {
+      if (!el.name || el.name === "_gotcha" || el.type === "hidden") return;
+      if (el.type === "checkbox" || el.type === "radio") {
+        if (el.checked) {
+          data.fields[el.name] = data.fields[el.name] || [];
+          data.fields[el.name].push(el.value || "on");
+        }
+      } else {
+        data.fields[el.name] = el.value;
+      }
+    });
+    return data;
+  }
+
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(collect())); } catch (e) {}
+  }
+  var saveTimer;
+  function debouncedSave() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 400); }
+
+  function restore() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) { return; }
+    if (!raw) { ensureMinItems(); return; }
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { ensureMinItems(); return; }
+
+    // rebuild repeatable groups to saved counts
+    Object.keys(data._repeat || {}).forEach(function (key) {
+      var group = form.querySelector('[data-repeat="' + key + '"]');
+      if (!group) return;
+      var want = data._repeat[key] || 0;
+      while (group.querySelectorAll("[data-repeat-item]").length < want) addItem(key);
+    });
+    ensureMinItems();
+
+    // apply values
+    Object.keys(data.fields || {}).forEach(function (name) {
+      var val = data.fields[name];
+      var controls = form.querySelectorAll('[name="' + cssEscape(name) + '"]');
+      if (!controls.length) return;
+      if (controls[0].type === "checkbox" || controls[0].type === "radio") {
+        var vals = Array.isArray(val) ? val : [val];
+        controls.forEach(function (c) { c.checked = vals.indexOf(c.value) !== -1; });
+      } else {
+        controls[0].value = val;
+      }
+    });
+
+    refreshOptStates();
+    // re-eval "Other" reveals
+    form.querySelectorAll("[data-other-for]").forEach(function (box) {
+      var sel = form.querySelector('input[name="' + box.dataset.otherFor + '"]:checked');
+      box.hidden = !(sel && sel.value === "Other");
+    });
+
+    if (data._step && data._step >= 1 && data._step <= TOTAL) current = data._step;
+  }
+
+  function ensureMinItems() {
+    form.querySelectorAll("[data-repeat]").forEach(function (g) {
+      var min = parseInt(g.dataset.min || "0", 10);
+      while (g.querySelectorAll("[data-repeat-item]").length < min) addItem(g.dataset.repeat);
+      if (min === 0 && g.querySelectorAll("[data-repeat-item]").length === 0) { /* leave empty */ }
+    });
+  }
+
+  function cssEscape(s) { return String(s).replace(/(["\\.\[\]])/g, "\\$1"); }
+
+  /* ---------- build the submission payload ---------- */
+  function val(name) { var c = fieldControl(name); return c ? c.value.trim() : ""; }
+  function checkedVals(name) {
+    return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (c) { return c.value; });
+  }
+  function radioVal(name, otherName) {
+    var sel = form.querySelector('input[name="' + name + '"]:checked');
+    if (!sel) return "";
+    if (sel.value === "Other" && otherName) { var o = val(otherName); return o ? "Other — " + o : "Other"; }
+    return sel.value;
+  }
+  function readGroup(key, fields) {
+    var group = form.querySelector('[data-repeat="' + key + '"]');
+    var out = [];
+    group.querySelectorAll("[data-repeat-item]").forEach(function (item, i) {
+      var parts = [];
+      fields.forEach(function (f) {
+        var ctrl = item.querySelector('[data-field="' + f + '"]');
+        if (!ctrl) return;
+        var v = (ctrl.type === "checkbox") ? (ctrl.checked ? "Yes" : "No") : ctrl.value.trim();
+        if (v) parts.push(labelText(f) + ": " + v);
+      });
+      if (parts.length) out.push((i + 1) + ". " + parts.join("\n   "));
+    });
+    return out.join("\n\n");
+  }
+  function join(arr) { return arr.length ? arr.join(", ") : ""; }
+  function threeActions() {
+    return [val("action_1"), val("action_2"), val("action_3")]
+      .filter(Boolean).map(function (a, i) { return (i + 1) + ". " + a; }).join("\n");
+  }
+
+  function buildPayload() {
+    var biz = val("business_name") || "Unknown business";
+    var p = {};
+    p["_subject"] = "New Website Questionnaire — " + biz;
+    p["email"] = val("business_email");
+
+    p["1. BUSINESS — Name"] = val("business_name");
+    p["1. BUSINESS — Owner / contact"] = val("contact_name");
+    p["1. BUSINESS — Email"] = val("business_email");
+    p["1. BUSINESS — Phone"] = val("business_phone");
+    p["1. BUSINESS — Address"] = val("business_address");
+    p["1. BUSINESS — Current website"] = val("current_website");
+    p["1. BUSINESS — Years in business"] = val("years_in_business");
+    p["1. BUSINESS — Social media links"] = val("social_links");
+    p["1. BUSINESS — Description"] = val("business_description");
+
+    p["2. GOALS — Primary goal"] = radioVal("primary_goal", "primary_goal_other");
+    p["2. GOALS — Ideal customer"] = val("ideal_customer");
+    p["2. GOALS — Top 3 visitor actions"] = threeActions();
+
+    p["3. SERVICES — Offerings"] = readGroup("offerings", ["name", "description", "price", "cta"]);
+    p["3. SERVICES — Display pricing publicly?"] = radioVal("display_pricing");
+
+    p["4. PAGES — Wanted"] = join(checkedVals("pages"));
+    p["4. PAGES — Other"] = val("other_pages");
+
+    p["5. BRAND — Has logo?"] = radioVal("has_logo");
+    p["5. BRAND — Brand colors"] = val("brand_colors");
+    p["5. BRAND — Colors to avoid"] = val("avoid_colors");
+    p["5. BRAND — Brand feel"] = [join(checkedVals("brand_feel")), val("brand_feel_other")].filter(Boolean).join(" · ");
+    p["5. BRAND — Websites they like"] = readGroup("liked_sites", ["url", "likes"]);
+    p["5. BRAND — Websites / styles disliked"] = val("disliked_design");
+
+    p["6. CONTENT — Has copy?"] = radioVal("has_copy");
+    p["6. CONTENT — Business story"] = val("business_story");
+    p["6. CONTENT — What makes them different"] = val("differentiator");
+    p["6. CONTENT — Common customer questions"] = readGroup("faqs", ["q", "a"]);
+
+    p["7. MEDIA — Has professional photos?"] = radioVal("has_photos");
+    p["7. MEDIA — Available"] = join(checkedVals("media_available"));
+    p["7. MEDIA — Notes"] = val("media_notes");
+
+    p["8. TESTIMONIALS — Approach"] = radioVal("has_testimonials");
+    p["8. TESTIMONIALS — Provided"] = readGroup("testimonials", ["name", "quote", "source", "permission"]);
+
+    p["9. CONTACT — Display phone"] = val("display_phone");
+    p["9. CONTACT — Display email"] = val("display_email");
+    p["9. CONTACT — Display address"] = val("display_address");
+    p["9. CONTACT — Business hours"] = val("business_hours");
+    p["9. CONTACT — Primary CTA"] = radioVal("primary_cta", "primary_cta_other");
+    p["9. CONTACT — Scheduling platform"] = radioVal("scheduler", "scheduler_other");
+    p["9. CONTACT — Booking URL"] = val("booking_url");
+
+    p["10. SEO — Target cities / areas"] = val("target_areas");
+    p["10. SEO — Search terms to rank for"] = val("search_terms");
+    p["10. SEO — Google Business Profile"] = val("gbp_link");
+    p["10. SEO — Main competitors"] = val("competitors");
+
+    p["11. AUTOMATION — Interested in"] = join(checkedVals("automation_interest"));
+    p["11. AUTOMATION — Other notes"] = val("automation_other");
+
+    p["12. LEGAL — Documents they have"] = join(checkedVals("legal_docs"));
+    p["12. LEGAL — Links / notes"] = val("legal_links");
+
+    p["13. FINAL — Anything else"] = val("anything_else");
+    p["13. FINAL — Definition of success"] = val("success_definition");
+    p["13. FINAL — Accuracy & permission confirmed"] =
+      form.querySelector('input[name="confirm_accuracy"]').checked ? "Yes" : "No";
+
+    // drop empties for a tidier email
+    Object.keys(p).forEach(function (k) { if (p[k] === "" || p[k] == null) delete p[k]; });
+    return p;
+  }
+
+  /* ---------- submit ---------- */
+  var submitBtn = document.getElementById("submitBtn");
+  var sendFail = document.getElementById("sendFail");
+  var confirmPanel = document.getElementById("confirmPanel");
+
+  function showConfirmation() {
+    form.hidden = true;
+    document.querySelector(".progress").hidden = true;
+    confirmPanel.hidden = false;
+    confirmPanel.querySelector("h2").setAttribute("tabindex", "-1");
+    confirmPanel.querySelector("h2").focus();
+    window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // honeypot
+    var hp = form.querySelector('input[name="_gotcha"]');
+    if (hp && hp.value) { showConfirmation(); return; }
+
+    var failed = validateStep(13);
+    if (failed.length) { renderErrSummary(failed); return; }
+
+    var endpoint = form.getAttribute("action");
+    if (endpoint.indexOf("YOUR_FORM_ID") !== -1) {
+      sendFail.hidden = false;
+      sendFail.innerHTML = "This form isn't connected yet. Please email your answers to " +
+        '<a href="mailto:hello@goldenvalleyweb.com">hello@goldenvalleyweb.com</a> ' +
+        "or try again later.";
+      return;
+    }
+
+    sendFail.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(buildPayload())
+    }).then(function (res) {
+      if (res.ok) { showConfirmation(); return; }
+      return res.json().then(function (j) {
+        throw new Error((j && j.errors && j.errors.map(function (x) { return x.message; }).join(", ")) || "Submission failed");
+      });
+    }).catch(function (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit questionnaire";
+      sendFail.hidden = false;
+      sendFail.innerHTML = "We couldn't send your questionnaire just now (" +
+        (err && err.message ? String(err.message) : "network error") +
+        "). Your answers are still saved on this device &mdash; please try again in a moment, or email " +
+        '<a href="mailto:hello@goldenvalleyweb.com">hello@goldenvalleyweb.com</a>.';
+    });
+  });
+
+  /* ---------- init ---------- */
+  form.addEventListener("input", debouncedSave);
+  form.addEventListener("change", debouncedSave);
+
+  // keep hidden subject roughly in sync for the no-JS fallback path
+  var bn = document.getElementById("business_name");
+  var fsSubject = document.getElementById("fsSubject");
+  if (bn && fsSubject) bn.addEventListener("blur", function () {
+    fsSubject.value = "New Website Questionnaire" + (bn.value.trim() ? " — " + bn.value.trim() : "");
+  });
+
+  restore();
+  refreshOptStates();
+  goTo(current, { silent: true });
+
+  // show confirmation if returning from a no-JS Formspree redirect
+  if (/[?&]submitted=1/.test(location.search)) showConfirmation();
+})();
+</script>
+
+</body>
+</html>
